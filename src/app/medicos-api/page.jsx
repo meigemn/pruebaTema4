@@ -1,10 +1,12 @@
 import Link from "next/link";
 
 
-import { Suspense } from "react";
-import MedicoNuevo from "../components/api-medico-nuevo";
-import Medicos from "../components/api-medicos";
+
+
 import Fallback from "../components/fallback";
+import MedicoNuevo from "../components/db-medico-nuevo";
+import Medicos from "../components/api-medicos";
+
 
 
 

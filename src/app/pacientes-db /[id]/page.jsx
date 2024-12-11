@@ -1,6 +1,7 @@
-import Link from "next/link";
+
 import { notFound } from 'next/navigation'
 import mysql from '@/lib/mysql'
+import Link from 'next/link';
 
 
 async function obtenerPaciente(id) {

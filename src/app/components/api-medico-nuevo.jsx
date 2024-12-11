@@ -23,10 +23,10 @@ function medicoNew() {
             <label htmlFor='nombre'>Nombre</label>
             <input required id='nombre' name='nombre' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
-            <label htmlFor='descripcion'>Especialidad:</label>
+            <label htmlFor='especialidad'>Especialidad:</label>
             <input required id='descripcion' name='descripcion' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
-            <label htmlFor='precio'>Perfil</label>
+            <label htmlFor='perfil'>Perfil</label>
             <input required id='precio' name='precio' type='number' step='0.01' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
             <div className='col-span-2 grid gap-2'>

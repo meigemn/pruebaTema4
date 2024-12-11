@@ -3,8 +3,10 @@ import { Suspense } from "react";
 import Link from "next/link";
 
 import Pacientes from "../components/db-pacientes";
-import PacienteNuevo from "../components/db-paciente-nuevo";
+
 import Fallback from "../components/fallback";
+import PacienteNuevo from "../components/db-paciente-nuevo";
+
 
 
 
@@ -22,7 +24,7 @@ async function PacientesPage({ searchParams }) {
             <h1 className='py-10 text-3xl text-blue-500 text-center border-b-4 border-b-blue-500'>
                 BASE DE DATOS
             </h1>
-       
+
             <Suspense fallback={ <Fallback>Nuevo paciente ... </Fallback> }>
                 <PacienteNuevo  />
             </Suspense>

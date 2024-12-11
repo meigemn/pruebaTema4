@@ -3,47 +3,47 @@ import Link from 'next/link'
 import { revalidatePath } from 'next/cache'
 import Buscar from './buscar'
 
-async function obtenerEstudiantes(query) {
-    const response = await fetch('http://localhost:4000/estudiantes')
-    const estudiantes = await response.json()
+async function obtenerMedicos(query) {
+    const response = await fetch('http://localhost:4000/medicos')
+    const medicos = await response.json()
 
     // Introducimos un retardo artificial
-    // await new Promise(resolve => setTimeout(resolve, 2000))
+    await new Promise(resolve => setTimeout(resolve, 2000))
 
-    return estudiantes.filter(estudiante => estudiante.nombre.toLowerCase().includes(query))
+    return medicos.filter(medico => medico.nombre.toLowerCase().includes(query))
 }
 
 
-async function eliminarEstudiante(formData) {
+async function eliminarMedico(formData) {
     'use server'
     const id = formData.get('id')
 
-    await fetch('http://localhost:4000/estudiantes/' + id, { method: 'DELETE' })
+    await fetch('http://localhost:4000/medicos/' + id, { method: 'DELETE' })
 
-    revalidatePath('/estudiantes-api')
+    revalidatePath('/medicos-api')
 }
 
 
-async function estudiantes({ query }) {
-    const estudiantes = await obtenerEstudiantes(query)
+async function Medicos({ query }) {
+    const medicos = await obtenerMedicos(query)
 
     return (
         <>
             <h1 className='text-2xl text-slate-600 py-2  mb-2 border-b-2 border-b-slate-600'>
-                Lista de estudiantes (API)
+                Lista de medicos (API)
             </h1>
 
             <Buscar />
 
             <div className='flex flex-col'>
-                {estudiantes.sort((a, b) => a.createdAt - b.createdAt).reverse()  // Orden inverso de tiempo                           
-                    .map((estudiante) => (
-                        <div key={estudiante.id} className='p-2 odd:bg-slate-100 flex justify-between'>
-                            <Link href={`/estudiantes-api/${estudiante.id}`}>{estudiante.nombre}</Link>
+                {medicos.sort((a, b) => a.createdAt - b.createdAt).reverse()  // Orden inverso de tiempo                           
+                    .map((medico) => (
+                        <div key={medico.id} className='p-2 odd:bg-slate-100 flex justify-between'>
+                            <Link href={`/medicos-api/${medico.id}`}>{medico.nombre}</Link>
                             <div className='flex gap-6'>
                                 <form>
-                                    <input type="hidden" name='id' value={estudiante.id} />
-                                    <button formAction={eliminarEstudiante} title='ELIMINAR'>❌</button>
+                                    <input type="hidden" name='id' value={medico.id} />
+                                    <button formAction={eliminarMedico} title='ELIMINAR'>❌</button>
                                 </form>
                             </div>
                         </div>
@@ -54,7 +54,7 @@ async function estudiantes({ query }) {
     )
 }
 
-export default estudiantes
+export default Medicos
 
 
 
