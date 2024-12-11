@@ -1,15 +1,16 @@
-import Link from "next/link";
-
 
 import { Suspense } from "react";
-import MedicoNuevo from "../components/api-medico-nuevo";
-import Medicos from "../components/api-medicos";
+import Link from "next/link";
+
+import Pacientes from "../components/db-pacientes";
+import PacienteNuevo from "../components/db-paciente-nuevo";
 import Fallback from "../components/fallback";
 
 
 
-async function MedicosPage({ searchParams }) {
-    const { query } = await searchParams;
+
+async function PacientesPage({ searchParams }) {
+    const {query} = await searchParams;
 
     // Introducimos un retardo artificial
     await new Promise(resolve => setTimeout(resolve, 2000))
@@ -19,18 +20,18 @@ async function MedicosPage({ searchParams }) {
             <Link href="/" className="fixed text-4xl p-2 bg-orange-300 rounded-full">🏠</Link>
 
             <h1 className='py-10 text-3xl text-blue-500 text-center border-b-4 border-b-blue-500'>
-                API REST
+                BASE DE DATOS
             </h1>
-
-            <Suspense fallback={<Fallback>Nuevo medico ... </Fallback>}>
-                <MedicoNuevo />
+       
+            <Suspense fallback={ <Fallback>Nuevo paciente ... </Fallback> }>
+                <PacienteNuevo  />
             </Suspense>
 
-            <Suspense fallback={<Fallback>Obteniendo datos ... </Fallback>}>
-                <Medicos query={query || ''} />
+            <Suspense fallback={ <Fallback>Obteniendo pacientes ... </Fallback> }>
+                <Pacientes query={query || ''} />
             </Suspense>
         </section>
     );
 }
 
-export default MedicosPage;
+export default PacientesPage;
