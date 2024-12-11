@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { Suspense } from "react";
+
+
+import Fallback from "../components/fallback";
 import Pacientes from "../components/api-pacientes ";
 import PacienteNew from "../components/api-paciente-nuevo ";
-import Fallback from "../components/fallback";
 //cuuidado abajo
 
 
