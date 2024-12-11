@@ -2,13 +2,13 @@ import Link from "next/link";
 
 
 import { Suspense } from "react";
-import MedicoNuevo from "../components/api-estudiante-nuevo";
-import Medicos from "../components/api-estudiantes";
+import MedicoNuevo from "../components/api-medico-nuevo";
+import Medicos from "../components/api-medicos";
 import Fallback from "../components/fallback";
 
 
 
-async function EstudiantesPage({ searchParams }) {
+async function MedicosPage({ searchParams }) {
     const { query } = await searchParams;
 
     // Introducimos un retardo artificial
@@ -33,4 +33,4 @@ async function EstudiantesPage({ searchParams }) {
     );
 }
 
-export default EstudiantesPage;
+export default MedicosPage;
